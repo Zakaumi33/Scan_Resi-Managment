@@ -10,8 +10,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #e9eff5;
             margin: 0;
-            padding: 0; /* Hapus padding body agar container bisa full width */
-            padding-top: 100px; /* Tambahkan padding agar konten tidak tertutup header sticky */
+            padding: 0; 
+            padding-top: 100px; 
             transition: background-color 0.3s, color 0.3s; 
         }
 
@@ -29,13 +29,13 @@
             top: 0;
             left: 0;
             z-index: 1000; 
-            background-color: #e9eff5; /* Warna latar belakang sticky sama dengan body */
-            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05); /* Tambahkan shadow tipis */
+            background-color: #e9eff5; 
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05); 
         }
         
         /* Pastikan elemen di dalamnya menyesuaikan lebar */
         #stickyHeaderContainer > .container {
-             padding: 0 20px; /* Tambahkan kembali padding horizontal */
+             padding: 0 20px; 
              max-width: 1200px;
              width: 100%;
              margin: auto;
@@ -61,7 +61,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0; /* Hapus margin bawah di header utama */
+            margin-bottom: 0; 
             padding-bottom: 10px;
             border-bottom: 2px solid #007bff;
             width: 100%;
@@ -98,33 +98,16 @@
             font-weight: 500;
         }
         
-        #scanDateSection {
-            width: 300px;
-            text-align: right;
-            margin-top: auto;
-            padding-top: 50px; 
-        }
-        #scanDateLabel {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-            color: #007bff;
-        }
-        #scanDateInput {
-            padding: 8px;
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+        /* #scanDateSection Dihapus */
 
 
         /* Input dan Widget Utama */
-        .content-container { /* Kontainer baru untuk konten di bawah header */
+        .content-container { 
             max-width: 1200px;
-            margin: 20px auto; /* Margin di bagian atas dan bawah */
+            margin: 20px auto; 
             display: flex;
             gap: 20px;
-            padding: 0 20px; /* Padding samping untuk konten */
+            padding: 0 20px; 
         }
         
         .input-area {
@@ -237,13 +220,13 @@
         #resiListControl {
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Sejajarkan vertikal */
+            align-items: center; 
             margin-top: 25px;
             margin-bottom: 10px;
         }
         
         #activeResiTitle {
-            margin: 0; /* Hapus margin default h2 */
+            margin: 0; 
             padding-bottom: 0;
             border-bottom: none;
             flex-shrink: 0;
@@ -256,7 +239,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 1rem;
-            max-width: 300px; /* Batasi lebar input pencarian */
+            max-width: 300px; 
         }
         
         /* Pindahkan border-bottom ke tabel */
@@ -364,7 +347,7 @@
         }
 
 
-        /* --- AVA ALERT CSS CODE START --- */
+        /* --- AVA ALERT CSS CODE START (PERBARUAN) --- */
         
         .ava-alert-container {
             position: fixed;
@@ -375,11 +358,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7); 
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(5px); 
             z-index: 99999;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s ease-in-out;
         }
 
         .ava-alert-container.show {
@@ -389,14 +373,17 @@
 
         .ava-alert {
             background: #fff;
-            padding: 30px; 
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            max-width: 500px; 
+            color: #333; 
+            padding: 40px; 
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); 
+            max-width: 550px; 
             width: 90%;
             text-align: center;
-            transform: scale(0.8);
-            transition: transform 0.3s;
+            transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 2px solid #ccc; 
+            position: relative; /* Penting untuk tombol close 'X' */
         }
         
         .ava-alert-container.show .ava-alert {
@@ -405,56 +392,75 @@
 
         .ava-alert h3 {
             margin-top: 0;
-            font-size: 2rem; 
-            color: #dc3545; /* Default danger color */
+            font-size: 2.2rem; 
+            color: #dc3545; 
         }
         
-        /* Modifikasi warna heading untuk tipe info/warning */
+        /* Modifikasi warna heading dan border */
         .ava-alert.ava-warning h3 {
             color: #ffc107;
         }
         .ava-alert.ava-info h3 {
             color: #17a2b8;
         }
-        
+        .ava-alert.ava-success h3 {
+             color: #28a745;
+        }
+        /* Teks di dalam pop-up (misalnya pesan di addResi) */
+        .ava-alert span {
+             color: inherit !important; 
+        }
+        .ava-alert span strong {
+             color: inherit; 
+        }
+
+        .ava-alert.ava-danger { border-color: #dc3545; }
+        .ava-alert.ava-warning { border-color: #ffc107; }
+        .ava-alert.ava-info { border-color: #17a2b8; }
+        .ava-alert.ava-success { border-color: #28a745; }
+
+
         /* Gaya Countdown */
         #ava-countdown {
-            display: block;
-            margin-top: 5px;
+            display: inline;
+            margin-left: 5px;
             font-size: 0.9rem;
-            color: #6c757d;
             font-weight: 500;
         }
 
+        /* DEFAULT BUTTON STYLES (Keep for other popups, but new warning popup uses custom buttons) */
         .ava-alert .btn {
-            background: #28a745; 
+            background: #007bff; 
             color: white;
             border: none;
             padding: 12px 25px; 
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 25px;
             font-weight: bold;
             font-size: 1.1rem;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
         }
         .ava-alert .btn:hover {
-             background: #218838;
+             background: #0069d9;
+        }
+        .ava-alert .btn:active {
+            transform: scale(0.98);
         }
         
-        /* Warna tombol default untuk Warning/Info */
-        .ava-alert.ava-warning .btn, .ava-alert.ava-info .btn {
-            background: #17a2b8;
+        .ava-alert.ava-danger .btn {
+            background: #dc3545;
         }
-        .ava-alert.ava-warning .btn:hover, .ava-alert.ava-info .btn:hover {
-            background: #138496;
+        .ava-alert.ava-danger .btn:hover {
+            background: #c82333;
         }
 
 
         .ava-alert .icon {
-            font-size: 4rem; 
+            font-size: 5rem; 
             margin-bottom: 10px;
             color: #dc3545;
+            display: block;
         }
         
         /* Warna icon untuk Warning/Info */
@@ -464,15 +470,165 @@
         .ava-alert.ava-info .icon {
             color: #17a2b8;
         }
+        .ava-alert.ava-success .icon {
+            color: #28a745;
+        }
+        
+        /* --- START OF CUSTOM POPUP STYLES (From User Request) --- */
+
+        /* Close Button 'X' for custom popups (top right) */
+        #avaCloseButton {
+            color: #9ca3af; /* Gray-400 */
+            background-color: transparent;
+            border: none;
+            padding: 6px 10px; /* p-1.5 */
+            border-radius: 8px; /* rounded-lg */
+            cursor: pointer;
+            transition: all 0.2s;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 10;
+        }
+        #avaCloseButton:hover {
+            background-color: #f3f4f6; /* Hover-bg-gray-200 */
+            color: #111827; /* Hover-text-gray-900 */
+        }
+        .dark-mode #avaCloseButton {
+            color: #6b7280;
+        }
+        .dark-mode #avaCloseButton:hover {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+        }
+        
+        /* Custom Icon SVG for the Warning/Danger popups */
+        .ava-alert .icon-svg {
+            display: block;
+            margin: 0 auto 15px;
+            width: 80px; /* w-20 */
+            height: 80px; /* h-20 */
+            color: #dc3545; /* Red-600 */
+        }
+        .ava-alert.ava-warning .icon-svg {
+             /* Mengubah icon svg warning menjadi warna kuning/jingga yang lebih sesuai dengan skema */
+             color: #ffc107; /* Warning color */
+        }
+        .ava-alert.ava-danger .icon-svg {
+             /* Mengubah icon svg danger menjadi warna merah */
+             color: #dc3545; 
+        }
 
 
-        /* Toast Styles (tidak berubah) */
+        .ava-alert .custom-text-content {
+            color: #6b7280; /* Gray-500 equivalent */
+            margin-top: 15px; /* mt-5 */
+            margin-bottom: 25px; /* mb-6 */
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            padding: 0 10px; /* Tambahkan sedikit padding horizontal */
+        }
+        
+        .dark-mode .ava-alert .custom-text-content {
+             color: #bbb;
+        }
+
+        /* Button Group for Custom Popup */
+        .ava-alert .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Spacing between buttons */
+            margin-top: 25px;
+        }
+
+        .ava-custom-btn {
+            font-weight: 500;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            line-height: 1.5;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Primary Action Button (SAYA MENGERTI) */
+        .ava-custom-btn-danger {
+            color: white;
+            /* Menggunakan warna merah seperti yang diminta pengguna di contoh kode */
+            background-color: #dc3545; /* Red-600 equivalent */
+            border: 1px solid #dc3545;
+        }
+        .ava-custom-btn-danger:hover {
+            background-color: #c82333; /* Darker Red */
+            border-color: #c82333;
+        }
+
+        /* Secondary Button (Not used in the Resi Mismatch, but included for complete style) */
+        .ava-custom-btn-secondary {
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+        .dark-mode .ava-custom-btn-secondary {
+             color: #f0f0f0;
+             background-color: #2c2c2c;
+             border-color: #3d3d3d;
+        }
+        .ava-custom-btn-secondary:hover {
+            background-color: #f0f0f0;
+        }
+        .dark-mode .ava-custom-btn-secondary:hover {
+            background-color: #1e1e1e;
+        }
+        
+        /* Tambahkan padding dan jarak di dalam konten custom */
+        .ava-alert .custom-content-wrapper {
+             padding: 10px 0 0;
+        }
+        
+        /* Modifikasi teks untuk warning/danger yang lebih menonjol */
+        .ava-alert.ava-warning .custom-content-wrapper .main-title {
+             font-size: 1.8rem;
+             color: #333; /* Warna gelap agar kontras */
+             font-weight: 700;
+             margin-bottom: 15px;
+        }
+        .dark-mode .ava-alert.ava-warning .custom-content-wrapper .main-title {
+             color: #f0f0f0;
+        }
+        
+        .ava-alert .custom-content-wrapper .detail-text {
+             font-size: 1rem;
+             color: #555;
+             line-height: 1.4;
+        }
+        .dark-mode .ava-alert .custom-content-wrapper .detail-text {
+             color: #bbb;
+        }
+        
+        .ava-alert .custom-content-wrapper hr {
+             margin: 10px 0;
+             border-color: #ddd;
+        }
+        .dark-mode .ava-alert .custom-content-wrapper hr {
+             border-color: #3d3d3d;
+        }
+
+        /* --- END OF CUSTOM POPUP STYLES --- */
+        
+        /* Toast Styles (diperbarui) */
         .ava-toast-list {
             position: fixed;
             z-index: 100000;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px; 
             padding: 20px;
         }
 
@@ -485,19 +641,20 @@
             background: #fff;
             color: #333;
             padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 300px;
-            min-width: 200px;
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+            max-width: 350px;
+            min-width: 250px;
             opacity: 0;
-            transform: translateX(100%);
-            transition: opacity 0.4s, transform 0.4s;
+            transform: translateX(120%);
+            transition: opacity 0.4s, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
+            border-left: 5px solid; 
         }
         
         /* Transition for top/bottom-left toasts */
         .ava-toast-list.top-left .ava-toast, .ava-toast-list.bottom-left .ava-toast {
-            transform: translateX(-100%);
+            transform: translateX(-120%);
         }
 
         .ava-toast.show {
@@ -506,14 +663,14 @@
         }
 
         .ava-toast-text {
-            font-weight: 500;
+            font-weight: 600; 
             margin: 0;
             display: flex;
             align-items: center;
         }
 
         .ava-toast .icon {
-            font-size: 1.2rem;
+            font-size: 1.4rem; 
             margin-right: 10px;
         }
         
@@ -521,10 +678,10 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            height: 3px;
+            height: 4px; 
             width: 100%;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 8px 8px;
+            background: rgba(0, 0, 0, 0.05); 
+            border-radius: 0 0 10px 10px;
         }
         
         .ava-toast .progress {
@@ -535,23 +692,49 @@
         }
 
         /* Color Schemes for Icons and Progress Bar */
+        .ava-success { border-left-color: #28a745; }
         .ava-success .icon, .ava-success .progress { color: #28a745; background: #28a745; }
+        
+        .ava-danger { border-left-color: #dc3545; }
         .ava-danger .icon, .ava-danger .progress { color: #dc3545; background: #dc3545; }
+        
+        .ava-info { border-left-color: #17a2b8; }
         .ava-info .icon, .ava-info .progress { color: #17a2b8; background: #17a2b8; }
+        
+        .ava-warning { border-left-color: #ffc107; }
         .ava-warning .icon, .ava-warning .progress { color: #ffc107; background: #ffc107; }
+        
+        .ava-none { border-left-color: #6c757d; }
         .ava-none .icon, .ava-none .progress { color: #6c757d; background: #6c757d; }
-
+        
+        /* Dark Mode adjustments for Alert/Toast */
+        body.dark-mode .ava-alert {
+            background: #1e1e1e; /* Warna latar belakang Dark Mode */
+            color: #e0e0e0; 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            border-color: #3d3d3d;
+        }
+        body.dark-mode .ava-alert.ava-warning {
+             border-color: #ffc107; 
+        }
+        
+        body.dark-mode .ava-toast {
+            background: #1e1e1e;
+            color: #f0f0f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        
         /* Icon definitions (menggunakan karakter sederhana) */
         .icon-success:before { content: '✓'; }
         .icon-danger:before { content: '✕'; }
         .icon-info:before { content: 'i'; }
         .icon-warning:before { content: '!'; }
-        /* --- AVA ALERT CSS CODE END --- */
+        /* --- AVA ALERT CSS CODE END (PERBARUAN) --- */
 
         /* --- CSS DARK MODE START --- */
         body.dark-mode {
-            background-color: #121212; /* Latar belakang gelap */
-            color: #e0e0e0; /* Teks terang */
+            background-color: #121212; 
+            color: #e0e0e0; 
         }
         
         .dark-mode #stickyHeaderContainer {
@@ -565,7 +748,7 @@
         }
 
         .dark-mode .container, .dark-mode .input-area {
-            background-color: #1e1e1e; /* Area konten gelap */
+            background-color: #1e1e1e; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
@@ -573,7 +756,7 @@
             color: #f0f0f0;
         }
 
-        .dark-mode #realTimeDate, .dark-mode #scanDateLabel {
+        .dark-mode #realTimeDate {
             color: #bbbbbb;
         }
         
@@ -581,7 +764,8 @@
             border-bottom-color: #0099ff;
         }
 
-        .dark-mode #scanDateInput,
+        /* #scanDateInput Dihapus */
+        /* .dark-mode #scanDateLabel Dihapus */
         .dark-mode #newResiInput, 
         .dark-mode #cancelResiInput,
         .dark-mode #searchResiInput {
@@ -634,6 +818,10 @@
 </head>
 <body>
     
+    <audio id="scannerBeep" src="scanning-item.mp3" preload="auto"></audio>
+    <audio id="errorBeep" src="buzzer-error.mp3" preload="auto"></audio>
+    <audio id="warningBeep" src="warning-sound.mp3" preload="auto"></audio>
+
     <div id="stickyHeaderContainer">
         <div id="watermark">Design By Galih Singgih</div>
 
@@ -649,11 +837,7 @@
                     <div id="realTimeClock">00:00:00</div>
                 </div>
                 
-                <div id="scanDateSection">
-                     <label for="scanDateInput" id="scanDateLabel">🗓️ Tanggal Data:</label>
-                     <input type="date" id="scanDateInput">
                 </div>
-            </div>
         </div>
     </div>
     
@@ -801,25 +985,8 @@
 
                 const alertDiv = document.createElement('div');
                 alertDiv.className = `ava-alert ava-${icon}`;
-
-                let iconChar = '';
-                if (icon === 'success') iconChar = '✓';
-                else if (icon === 'danger') iconChar = '✕';
-                else if (icon === 'info') iconChar = 'i';
-                else if (icon === 'warning') iconChar = '!';
-
-                alertDiv.innerHTML = `
-                    <div class="icon">${iconChar}</div>
-                    <h3>${text}</h3>
-                    <button class="btn">${btnText} <span id="ava-countdown"></span></button>
-                `;
-
-                container.appendChild(alertDiv);
-                document.body.appendChild(container);
-
-                setTimeout(() => {
-                    container.classList.add('show');
-                }, 10);
+                
+                let btn = null;
                 
                 const closePopup = () => {
                     clearInterval(countdownInterval);
@@ -827,38 +994,177 @@
                     setTimeout(() => {
                         document.body.removeChild(container);
                         document.removeEventListener('keydown', handleKeyClose); 
-                        newResiInput.focus();
+                        
+                        // Setelah menutup popup, kembalikan fokus ke input resi baru
+                        const newResiInput = document.getElementById('newResiInput');
+                        if(newResiInput) newResiInput.focus();
+                        
                     }, 300);
                 };
-
+                
                 const handleKeyClose = (e) => {
+                    // Cek jika Enter atau Spasi ditekan DAN tombol konfirmasi sedang fokus
                     if (e.key === 'Enter' || e.key === ' ') { 
-                        e.preventDefault(); 
-                        closePopup();
+                        if(document.activeElement === btn || document.activeElement === document.getElementById('avaConfirmButton')) {
+                            e.preventDefault(); 
+                            closePopup();
+                        }
                     }
                 };
-
-                document.addEventListener('keydown', handleKeyClose);
-
-                const btn = alertDiv.querySelector('.btn');
-                btn.onclick = closePopup;
                 
-                let timeLeft = timer / 1000;
-                const countdownSpan = document.getElementById('ava-countdown');
+                let countdownInterval;
                 
-                countdownSpan.textContent = `(Tutup dalam ${timeLeft} detik)`; 
-                
-                const countdownInterval = setInterval(() => {
-                    timeLeft--;
-                    countdownSpan.textContent = `(Tutup dalam ${timeLeft} detik)`;
+                // NEW: Logic for Custom Warning/Danger Popup (RESI TIDAK COCOK / CANCEL DITEMUKAN)
+                if (icon === 'warning' || icon === 'danger') {
                     
-                    if (timeLeft <= 0) {
-                        closePopup();
+                    // Choose the right SVG icon based on the icon type
+                    let svgIconPath = '';
+                    let svgColorClass = 'text-red-600'; // Default to red
+                    
+                    if (icon === 'warning') {
+                        // Warning icon (Exclamation mark in a circle)
+                        svgIconPath = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
+                        svgColorClass = 'text-yellow-500'; // Menggunakan kelas warna untuk styling CSS yang lebih spesifik
+                    } else if (icon === 'danger') {
+                        // Danger icon (X in a circle - can be used for CANCEL RESI FOUND)
+                        svgIconPath = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
+                        svgColorClass = 'text-red-600'; 
                     }
-                }, 1000);
+                    
+                    const customSvg = `<svg class="icon-svg ${svgColorClass}" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        ${svgIconPath}
+                                        </svg>`;
+
+
+                    alertDiv.innerHTML = `
+                        <div style="position: absolute; top: 0; right: 0;">
+                            <button type="button" id="avaCloseButton" title="Tutup" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </div>
+                        
+                        <div class="custom-content-wrapper p-6 pt-0 text-center">
+                            ${customSvg}
+                            
+                            <h3 class="main-title text-xl font-normal text-gray-500 mt-5 mb-6"></h3>
+                            
+                            <div class="custom-text-content">
+                                ${text}
+                            </div>
+                            
+                            <div class="btn-group">
+                                <a href="#" id="avaConfirmButton" class="ava-custom-btn ava-custom-btn-danger" style="margin: 0; padding: 12px 25px;">
+                                    ${btnText} <span id="ava-countdown"></span>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Set the main title using a hidden span inside the text for the old logic compatibility
+                    const mainTitleElement = alertDiv.querySelector('.main-title');
+                    
+                    // Extract the main title (The content that was previously inside <h3> in addResi)
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = text;
+                    const mainTitleSpan = tempDiv.querySelector('span:first-child');
+                    
+                    if (mainTitleSpan) {
+                         mainTitleElement.innerHTML = mainTitleSpan.innerHTML;
+                         // Remove the title from the main text content
+                         mainTitleSpan.remove();
+                         alertDiv.querySelector('.custom-text-content').innerHTML = tempDiv.innerHTML;
+                    } else {
+                         mainTitleElement.style.display = 'none';
+                         alertDiv.querySelector('.custom-text-content').innerHTML = text;
+                    }
+
+                    // Attach event listeners for the new buttons
+                    const closeBtn = document.getElementById('avaCloseButton');
+                    if (closeBtn) closeBtn.onclick = closePopup;
+                    
+                    btn = document.getElementById('avaConfirmButton');
+                    if (btn) btn.onclick = closePopup;
+                    
+                    // Set focus after showing
+                    setTimeout(() => {
+                        container.classList.add('show');
+                        if (btn) btn.focus();
+                    }, 10);
+                    
+                } else {
+                    // ORIGINAL LOGIC for other icons (success, info)
+                    let iconChar = '';
+                    if (icon === 'success') iconChar = '✓';
+                    else if (icon === 'info') iconChar = 'i';
+                    
+                    alertDiv.innerHTML = `
+                        <div class="icon">${iconChar}</div>
+                        <h3>${text}</h3>
+                        <button class="btn">${btnText} <span id="ava-countdown"></span></button>
+                    `;
+                    
+                    btn = alertDiv.querySelector('.btn');
+                    setTimeout(() => {
+                        container.classList.add('show');
+                        btn.focus();
+                    }, 10);
+                    
+                    btn.onclick = closePopup;
+                }
+                
+                container.appendChild(alertDiv);
+                document.body.appendChild(container);
+
+                const countdownSpan = document.getElementById('ava-countdown');
+
+                // Start countdown only if there's a timer > 0 and the span exists
+                if (timer > 0 && countdownSpan) {
+                     let timeLeft = timer / 1000;
+                     countdownSpan.textContent = `(Tutup dalam ${timeLeft} detik)`; 
+                    
+                     countdownInterval = setInterval(() => {
+                         timeLeft--;
+                         countdownSpan.textContent = `(Tutup dalam ${timeLeft} detik)`;
+                        
+                         if (timeLeft <= 0) {
+                             closePopup();
+                         }
+                     }, 1000);
+                } else if (countdownSpan) {
+                     countdownSpan.textContent = ''; // Clear countdown if no timer
+                }
             }
         }
         // --- AVA ALERT JAVASCRIPT CODE END ---
+        
+        // Function untuk memutar suara (success/default)
+        function playBeepSound() {
+            const audio = document.getElementById('scannerBeep');
+            // Untuk memastikan suara dapat dimainkan ulang dengan cepat
+            audio.currentTime = 0; 
+            audio.play().catch(e => console.error("Error playing audio:", e));
+        }
+
+        // NEW Function untuk memutar suara error (buzzer-error.mp3)
+        function playErrorSound() {
+            const audio = document.getElementById('errorBeep');
+            audio.currentTime = 0; 
+            audio.play().catch(e => console.error("Error playing error audio:", e));
+        }
+
+        // NEW Function untuk memutar suara warning/cancel (warning-sound.mp3)
+        function playWarningSound() {
+            const audio = document.getElementById('warningBeep');
+            audio.currentTime = 0;
+            // Memastikan suara dapat dimainkan, terutama di lingkungan browser yang ketat.
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(e => console.error("Error playing warning audio:", e));
+            }
+        }
 
 
         // --- DATA DAN STATE ---
@@ -867,14 +1173,14 @@
         let allPackages = {};
         let activeSheet = SHEET_NAMES[0];
 
-        // Daftar Prefix Kurir (Diperbarui sesuai permintaan pengguna)
+        // Daftar Prefix Kurir 
         const COURIER_PREFIXES = {
             'Shopee': ['SPXID05', 'SPXID0'],
             'JNT': ['JX62', 'TKP50', 'JP', 'JX', 'MANUAL 1', 'MANUAL 2', 'MANUAL 3', 'MANUAL 4', 'MANUAL 5'], 
             'JNE': ['CM', 'JY', 'TG', 'CN'],
             'GTL': ['GTL'],
             'Sicepat': ['00', 'SC'], 
-            'Lazada': ['LXAD', 'JNAP'], // Prefix Lazada ditambahkan 'JNAP'
+            'Lazada': ['LXAD', 'JNAP'], 
             'Ninja': ['NJAT', 'NJVTT'],
         };
 
@@ -893,7 +1199,7 @@
         const searchResiInput = document.getElementById('searchResiInput');
         const realTimeClock = document.getElementById('realTimeClock');
         const realTimeDate = document.getElementById('realTimeDate');
-        const scanDateInput = document.getElementById('scanDateInput');
+        // const scanDateInput = document.getElementById('scanDateInput'); // Dihapus
         const cancelResiInput = document.getElementById('cancelResiInput');
         const cancelledResiList = document.getElementById('cancelledResiList');
         
@@ -1024,9 +1330,7 @@
                 }
             }
 
-            const today = new Date();
-            const formattedDate = today.toISOString().slice(0, 10);
-            scanDateInput.value = formattedDate;
+            // Bagian scanDateInput.value = formattedDate; Dihapus
         }
 
         function validateResiPrefix(resi, sheetName) {
@@ -1116,7 +1420,7 @@
 
             if (isAutomaticMode) {
                 // Special display for 'Otomatis' tab
-                const automaticModeText = "Mode Otomatis Aktif. Resi akan disortir otomatis ke Kurir yang sesuai. Silakan pindah ke tab kurir spesifik untuk melihat dan mencari daftar resi.";
+                const automaticModeText = "Mode Otomatis Aktif. Resi akan disortir otomatis ke Kurir yang sesuai dengan prefixnya. Silakan pindah ke tab kurir spesifik untuk melihat dan mencari daftar resi.";
                 listPlaceholder(automaticModeText, resiList, true);
                 
                 cancelledResiList.innerHTML = ''; 
@@ -1213,10 +1517,13 @@
             let wasRemoved = false;
             // Hanya hapus dari sheet kurir
             SHEET_NAMES.filter(name => name !== 'Otomatis').forEach(sheetName => {
-                const initialLength = allPackages[sheetName].activeResis.length;
-                allPackages[sheetName].activeResis = allPackages[sheetName].activeResis.filter(r => r !== resi);
-                if (allPackages[sheetName].activeResis.length < initialLength) {
-                    wasRemoved = true;
+                const data = allPackages[sheetName];
+                if (data) {
+                    const initialLength = data.activeResis.length;
+                    data.activeResis = data.activeResis.filter(r => r !== resi);
+                    if (data.activeResis.length < initialLength) {
+                        wasRemoved = true;
+                    }
                 }
             });
             return wasRemoved;
@@ -1245,12 +1552,14 @@
             if (resi === "") {
                 showAlert("Nomor resi tidak boleh kosong!", 'error');
                 inputElement.focus();
+                playErrorSound();
                 return;
             }
             
             if (resi.length < 10) {
                 showAlert("Resi terlalu pendek. Pastikan sudah benar.", 'error');
                 inputElement.focus();
+                playErrorSound();
                 return;
             }
 
@@ -1258,6 +1567,7 @@
              if (isCancel && activeSheet === 'Otomatis') {
                  showAlert(`❌ Tidak bisa mencatat Resi Cancel di tab Otomatis. Pindah ke tab kurir spesifik.`, 'error');
                  cancelResiInput.focus();
+                 playErrorSound();
                  return;
              }
 
@@ -1266,18 +1576,21 @@
             
             if (cancelledBySheet) {
                 
+                playWarningSound();
                 const wasRemovedFromActive = removeResiFromAllActiveSheets(resi);
                 
                 saveData();
                 updateDisplay();
                 createSheetTabs();
 
+                // Custom DANGER/CANCEL pop-up menggunakan gaya baru
                 ava({
-                    icon: 'danger',
+                    icon: 'danger', // Menggunakan 'danger' untuk tampilan merah
                     text: `<span style="font-size: 2.5rem; display: block; margin-bottom: 10px; font-weight: bold;">⚠️ PAKET CANCEL DITEMUKAN!</span><br>
-                           <span style="font-size: 1.2rem; color: #333;">Nomor Resi: <strong>${resi}</strong><br>
+                           <span class="detail-text" style="color: #333;">Nomor Resi: <strong>${resi}</strong><br>
                            Dibatalkan di Kurir: <strong>${cancelledBySheet}</strong></span>
-                           <br><br>Paket ini tidak boleh dikirim!`,
+                           <hr>
+                           <span class="detail-text" style="color: #333; font-weight: bold;">Paket ini tidak boleh dikirim!</span>`,
                     btnText: 'SAYA MENGERTI, KONFIRMASI (OK)',
                     toast: false,
                     timer: 10000 
@@ -1309,6 +1622,7 @@
                          if (activeList.includes(resi)) {
                              showAlert(`❌ Resi **${resi}** sudah ada di daftar aktif **${suggestedSheet}** (Disortir Otomatis)!`, 'error');
                              newResiInput.focus();
+                             playErrorSound();
                              return;
                          }
                          
@@ -1316,6 +1630,7 @@
                          saveData();
                          createSheetTabs();
                          updateDisplay();
+                         playBeepSound(); // Play sound on successful automatic sort
                          ava({ icon: 'success', text: `✅ Resi **${resi}** otomatis disortir ke **${suggestedSheet}**.`, toast: true, timer: 3000 });
                      } else {
                          ava({ 
@@ -1324,6 +1639,7 @@
                              toast: true, 
                              timer: 5000 
                          });
+                         playErrorSound();
                      }
                      newResiInput.focus();
                      return;
@@ -1335,6 +1651,7 @@
                     if (activeList.includes(resi)) {
                         showAlert(`❌ Resi **${resi}** sudah ada di daftar aktif ${activeSheet}!`, 'error');
                         newResiInput.focus();
+                        playErrorSound();
                         return;
                     }
                     
@@ -1346,25 +1663,28 @@
                             suggestedText = `Resi ini cocok dengan kurir: <strong>${validation.suggestedSheet}</strong>. Silakan pindah tab.`;
                         }
                         
+                        // NEW: Custom Popup Implementation for Mismatch Warning
                         ava({
                             icon: 'warning',
                             text: `<span style="font-size: 2.5rem; display: block; margin-bottom: 10px; font-weight: bold;">❌ RESI TIDAK COCOK!</span>
-                                   <span style="font-size: 1.2rem; color: #333;">
+                                   <span class="detail-text" style="color: #555;">
                                    Resi: <strong>${resi}</strong><br>
                                    Sheet Aktif: <strong>${activeSheet}</strong><br>
-                                   <hr style="border-color: #ffc107; margin: 10px 0;">
+                                   <hr style="border-color: #eee; margin: 10px 0;">
                                    ${suggestedText}</span>`,
                             btnText: 'SAYA MENGERTI',
                             toast: false,
                             timer: 8000
                         });
                         
+                        playErrorSound();
                         newResiInput.focus();
                         return; 
                     }
                     
                     allPackages[activeSheet].activeResis.push(resi);
                     showAlert(`✅ Resi **${resi}** berhasil ditambahkan ke ${activeSheet}.`, 'success');
+                    playBeepSound(); // Play sound on successful active resi add
                 }
 
             } 
@@ -1376,6 +1696,7 @@
                 if (cancelledList.includes(resi)) {
                     showAlert(`❌ Resi Cancel **${resi}** sudah ada di daftar cancel ${activeSheet}!`, 'error');
                     cancelResiInput.focus();
+                    playErrorSound();
                     return;
                 }
                 
@@ -1383,6 +1704,8 @@
 
                 allPackages[activeSheet].cancelledResis.push(resi);
                 showAlert(`✅ Resi Cancel **${resi}** berhasil dicatat di ${activeSheet}.`, 'success');
+                // --- PENTING: Menggunakan Warning Sound untuk Cancel ---
+                playWarningSound(); 
                 
                 if (wasRemovedFromActive) {
                     ava({ icon: 'info', text: `Resi ${resi} dihapus dari daftar Aktif karena dicatat sebagai Cancel.`, toast: true, timer: 4000 });
@@ -1419,7 +1742,10 @@
         function exportDataToExcel() {
             ava({ icon: 'info', text: 'Mempersiapkan data ekspor...', toast: true });
             
-            const scanDate = scanDateInput.value;
+            // Menggunakan tanggal hari ini karena input tanggal dihapus
+            const now = new Date();
+            const scanDate = now.toISOString().slice(0, 10); 
+            
             let csvContent = "Kurir,Tipe,Nomor Resi,Tanggal Scan\n";
 
             SHEET_NAMES.filter(name => name !== 'Otomatis').forEach(sheetName => {
@@ -1536,15 +1862,15 @@
             // Hanya izinkan clear di sheet kurir
             if (activeSheet === 'Otomatis') return;
             
+            // Custom WARNING pop-up menggunakan gaya baru
             ava({
                 icon: 'warning',
-                text: `Anda yakin ingin menghapus **SEMUA (${allPackages[activeSheet].activeResis.length + allPackages[activeSheet].cancelledResis.length})** Resi di sheet **${activeSheet}**? Aksi ini tidak bisa dibatalkan!`,
+                text: `<span style="font-size: 2.5rem; display: block; margin-bottom: 10px; font-weight: bold;">HAPUS RESI SHEET AKTIF?</span>
+                       <span class="detail-text" style="color: #555;">Anda yakin ingin menghapus **SEMUA (${allPackages[activeSheet].activeResis.length + allPackages[activeSheet].cancelledResis.length})** Resi di sheet **${activeSheet}**? Aksi ini tidak bisa dibatalkan!</span>`,
                 btnText: 'YA, HAPUS SEKARANG',
-                
             });
             
-            const alertBtn = document.querySelector('.ava-alert .btn');
-            alertBtn.style.backgroundColor = '#dc3545';
+            const alertBtn = document.getElementById('avaConfirmButton');
             alertBtn.onclick = () => {
                 allPackages[activeSheet].activeResis = [];
                 allPackages[activeSheet].cancelledResis = [];
@@ -1564,14 +1890,15 @@
 
 
         function resetAllData() {
+            // Custom DANGER pop-up menggunakan gaya baru
             ava({
                 icon: 'danger',
-                text: 'Anda yakin ingin menghapus **SEMUA** data Resi (Global Reset)? Ini akan menghapus data semua kurir! Aksi ini tidak bisa dibatalkan!',
+                text: `<span style="font-size: 2.5rem; display: block; margin-bottom: 10px; font-weight: bold;">HAPUS SEMUA DATA (GLOBAL RESET)?</span>
+                       <span class="detail-text" style="color: #555;">Anda yakin ingin menghapus **SEMUA** data Resi (Global Reset)? Ini akan menghapus data semua kurir! Aksi ini tidak bisa dibatalkan!</span>`,
                 btnText: 'YA, RESET TOTAL',
             });
             
-            const alertBtn = document.querySelector('.ava-alert .btn');
-            alertBtn.style.backgroundColor = '#dc3545';
+            const alertBtn = document.getElementById('avaConfirmButton');
             alertBtn.onclick = () => {
                 localStorage.removeItem(STORAGE_KEY);
                 loadData(); 
@@ -1631,7 +1958,7 @@
         clearSheetBtn.addEventListener('click', clearActiveSheet);
 
         searchResiInput.addEventListener('keyup', updateDisplay);
-        scanDateInput.addEventListener('change', updateDisplay);
+        // scanDateInput.addEventListener('change', updateDisplay); // Dihapus
 
         document.addEventListener('keydown', handleShortcut);
         
